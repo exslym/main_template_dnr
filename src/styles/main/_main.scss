@@ -1,0 +1,287 @@
+.wrapper {
+	padding: 0;
+	margin: 0 auto;
+	position: relative;
+	overflow: hidden;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: start;
+	-ms-flex-pack: start;
+	justify-content: flex-start;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	min-height: 100%;
+	width: 100%;
+}
+
+.section {
+	position: relative;
+	max-width: 1920px;
+	width: 100%;
+	background: $clr-white;
+	&__content {
+		margin: 0 auto;
+		@include adaptMult(padding, 40 20, 80 30, 1024);
+		@include adapt(max-width, 808, 1340);
+		width: 100%;
+	}
+}
+
+#graph {
+	position: relative;
+	background: $clr-white;
+	border-radius: 20px;
+	padding: 40px 16px 10px;
+	img {
+		min-width: 800px;
+		width: 100%;
+		padding-bottom: 24px;
+		border-radius: 20px;
+	}
+}
+
+._1 {
+	.section__content {
+		@include adapt(padding-bottom, 20, 40);
+		.research {
+			&__block {
+				@include adapt(border-radius, 14, 40);
+				background: $clr-light;
+				z-index: 1;
+				isolation: isolate;
+				.expandButton {
+					cursor: pointer;
+					gap: 10px;
+					@include adapt(padding, 14, 20);
+					@include adapt(border-radius, 14, 20);
+					border: 1px solid $clr-blue;
+					background-color: $clr-white;
+					-webkit-transition: background-color 0.2s ease-in;
+					transition: background-color 0.2s ease-in;
+					&:hover {
+						background-color: $clr-light;
+						-webkit-transition: background-color 0.2s ease-in;
+						transition: background-color 0.2s ease-in;
+					}
+					@media (max-width: 500px) {
+						-webkit-box-orient: horizontal;
+						-webkit-box-direction: normal;
+						-ms-flex-direction: row;
+						flex-direction: row;
+					}
+				}
+				.expandButton-title {
+					font-weight: 700;
+					color: $clr-black;
+					-webkit-transition: color 0.2s ease-in;
+					transition: color 0.2s ease-in;
+				}
+				.expandButton-icon {
+					width: 100%;
+					@include adapt(max-width, 20, 28);
+					.expandIcon {
+						@include adapt(max-width, 20, 28);
+						@include adapt(max-height, 20, 28);
+						display: block;
+						-webkit-transform-style: preserve-3d;
+						transform-style: preserve-3d;
+						-webkit-transform: rotateX(0deg);
+						transform: rotateX(0deg);
+						-webkit-transition: all 0s ease-in 0.1s;
+						transition: all 0s ease-in 0.1s;
+						path {
+							fill: $clr-blue;
+							-webkit-transition: fill 0.2s ease-in;
+							transition: fill 0.2s ease-in;
+						}
+					}
+				}
+				.expandBlock {
+					opacity: 0;
+					z-index: -1;
+					-webkit-transition: max-height 0.2s ease-in, opacity 0.15s ease-out;
+					transition: max-height 0.2s ease-in, opacity 0.15s ease-out;
+					&-content {
+						@include adapt(padding, 20, 40);
+						@include adapt(padding-bottom, 24, 58);
+						&-desktop {
+							@include adapt(gap, 10, 30);
+							width: 100%;
+						}
+						&-img {
+							.graph {
+								@include adapt(border-radius, 10, 20);
+								width: 100%;
+							}
+						}
+
+						@media (max-width: 768px) {
+							&-img {
+								.graph {
+									@include adapt(border-radius, 10, 17, 768);
+								}
+								.button_zoom {
+									margin-top: 20px;
+								}
+							}
+						}
+					}
+				}
+			}
+			._expandClass {
+				.expandBlock {
+					opacity: 1;
+					-webkit-transition: max-height 0.2s ease-in, opacity 0.3s ease-in-out;
+					transition: max-height 0.2s ease-in, opacity 0.3s ease-in-out;
+				}
+				.expandButton {
+					background-color: $clr-blue;
+					-webkit-transition: background-color 0.2s ease-in;
+					transition: background-color 0.2s ease-in;
+				}
+				.expandButton-title {
+					color: $clr-white;
+					-webkit-transition: color 0.2s ease-in;
+					transition: color 0.2s ease-in;
+				}
+				.expandButton-icon {
+					.expandIcon {
+						-webkit-transform-style: preserve-3d;
+						transform-style: preserve-3d;
+						-webkit-transform: rotateX(180deg);
+						transform: rotateX(180deg);
+						-webkit-transition: all 0s ease-in 0.1s;
+						transition: all 0s ease-in 0.1s;
+						path {
+							fill: $clr-white;
+							-webkit-transition: fill 0.2s ease-in;
+							transition: fill 0.2s ease-in;
+						}
+					}
+				}
+				.expandBlock {
+					z-index: 1;
+					&-content {
+						z-index: 1;
+					}
+				}
+			}
+		}
+	}
+}
+
+._2 {
+	.section__content {
+		.methods {
+			&__cards {
+				@include adapt(gap, 10, 16);
+				.flipper {
+					-webkit-perspective: 1500;
+					perspective: 1500;
+					-webkit-transform-style: preserve-3d;
+					transform-style: preserve-3d;
+					width: 33%;
+					height: 100%;
+					@include adapt(border-radius, 20, 40);
+					-webkit-transform: scale(1);
+					transform: scale(1);
+					-webkit-transition: all 0.15s ease-in;
+					transition: all 0.15s ease-in;
+					&:hover {
+						-webkit-transform: scale(1.04);
+						transform: scale(1.04);
+						-webkit-transition: all 0.15s ease-in;
+						transition: all 0.15s ease-in;
+					}
+					&__card {
+						cursor: pointer;
+						position: relative;
+						-webkit-transform-style: preserve-3d;
+						transform-style: preserve-3d;
+						-webkit-transition: 0.6s linear;
+						transition: 0.6s linear;
+						max-height: 100%;
+						@include adapt(min-height, 210, 370);
+
+						&_front,
+						&_back {
+							position: absolute;
+							left: 0;
+							top: 0;
+							width: 100%;
+							height: 100%;
+							-webkit-backface-visibility: hidden;
+							backface-visibility: hidden;
+							@include adapt(padding, 16, 40);
+							@include adapt(border-radius, 20, 40);
+							-webkit-box-align: start;
+							-ms-flex-align: start;
+							align-items: flex-start;
+							@media (max-width: 767px) {
+								@include adaptMult(padding, 16 20, 30 30, 1280);
+							}
+						}
+						&_front,
+						&_back {
+							@include adapt(gap, 10, 24);
+							-webkit-box-pack: space-evenly;
+							-ms-flex-pack: space-evenly;
+							justify-content: space-evenly;
+							z-index: 2;
+							-webkit-transform: rotateY(0deg);
+							transform: rotateY(0deg);
+							-webkit-transition: all 0.3s ease 0s;
+							transition: all 0.3s ease 0s;
+							img {
+								width: 100%;
+								@include adapt(max-width, 36, 64);
+							}
+							.title {
+								@include adapt(margin-top, 10, 30);
+								color: $clr-blue;
+							}
+							.subtitle {
+								@include adapt(font-size, 15, 22);
+								font-weight: 500;
+							}
+						}
+						&_back {
+							-webkit-transform: rotateY(-180deg);
+							transform: rotateY(-180deg);
+							.title {
+								color: $clr-white;
+							}
+							.subtitle {
+								color: $clr-white;
+							}
+						}
+					}
+				}
+				@media (max-width: 700px) {
+					-webkit-box-orient: vertical;
+					-webkit-box-direction: normal;
+					-ms-flex-direction: column;
+					flex-direction: column;
+					gap: 16px;
+					& > * {
+						width: 100% !important;
+					}
+					.flipper__card {
+						@include adapt(min-height, 190, 210, 700);
+						& > * {
+							-webkit-box-pack: space-evenly;
+							-ms-flex-pack: space-evenly;
+							justify-content: space-evenly;
+						}
+					}
+				}
+			}
+		}
+	}
+}

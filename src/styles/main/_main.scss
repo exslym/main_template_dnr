@@ -33,19 +33,6 @@
 	}
 }
 
-#graph {
-	position: relative;
-	background: $clr-white;
-	border-radius: 20px;
-	padding: 40px 16px 10px;
-	img {
-		min-width: 800px;
-		width: 100%;
-		padding-bottom: 24px;
-		border-radius: 20px;
-	}
-}
-
 ._1 {
 	.section__content {
 		@include adapt(padding-bottom, 20, 40);

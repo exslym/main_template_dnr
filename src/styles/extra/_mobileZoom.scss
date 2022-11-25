@@ -1,0 +1,70 @@
+.button_plus {
+	display: none;
+	padding: 0;
+	margin: 0 auto;
+	cursor: pointer;
+	@include adapt(padding, 12, 23);
+	@include adapt(max-width, 144, 240);
+	@include adapt(max-height, 39, 65);
+	@include adapt(border-radius, 8, 16);
+	width: 100%;
+	height: 100%;
+	background-color: $clr-blue;
+	-webkit-transition: background-color 0.2s linear;
+	transition: background-color 0.2s linear;
+	-webkit-transform: skewX(-13deg);
+	transform: skewX(-13deg);
+	p {
+		-webkit-transform: skewX(13deg);
+		transform: skewX(13deg);
+		@include adapt(font-size, 13, 16);
+		font-weight: 500;
+		line-height: 100%;
+		text-align: center;
+		color: $clr-white;
+		-webkit-transition: color 0.2s linear;
+		transition: color 0.2s linear;
+	}
+	&:hover {
+		background-color: $clr-blue-hover;
+		-webkit-transition: background-color 0.2s linear;
+		transition: background-color 0.2s linear;
+	}
+}
+
+@media (max-width: 600px) {
+	.button_zoom {
+		text-align: center;
+		margin-top: 20px;
+	}
+	.button_plus {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-box-align: center;
+		-ms-flex-align: center;
+		align-items: center;
+		-webkit-box-pack: center;
+		-ms-flex-pack: center;
+		justify-content: center;
+		padding: 8px;
+		padding-top: 10px;
+		padding-bottom: 12px;
+		max-width: 140px;
+		@include adapt(border-radius, 6, 7, 430);
+		font-size: 0.95em;
+	}
+}
+
+#graph {
+	position: relative;
+	background: $clr-white;
+	border-radius: 20px;
+	padding: 40px 16px 10px;
+	img {
+		min-width: 800px;
+		width: 100%;
+		padding-bottom: 24px;
+		border-radius: 20px;
+	}
+}

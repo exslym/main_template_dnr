@@ -1,5 +1,5 @@
 /* fonts */
-$font-inter: 'Inter', Arial, Helvetica, sans-serif;
+$font-main: 'Inter', Arial, Helvetica, sans-serif;
 $font-bebas: 'Bebas Neue', Arial, Helvetica, sans-serif;
 
 /* colors */
@@ -13,6 +13,9 @@ $clr-red: #df0077;
 $clr-blue: #0094da;
 $clr-blue-hover: #45bff8;
 $clr-blue-hover-lt: rgb(153, 220, 251);
+
+/* desktop scrollbar width */
+$scrollbar: 15px;
 
 /* font-sizes */
 .fs50 {

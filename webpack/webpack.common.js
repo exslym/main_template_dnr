@@ -26,7 +26,7 @@ module.exports = {
 	output: {
 		path: Path.join(__dirname, '../build'),
 		filename: 'js/[name].js',
-		assetModuleFilename: 'public/[name][ext]',
+		assetModuleFilename: '[path][name][ext]',
 	},
 	optimization: {
 		splitChunks: {

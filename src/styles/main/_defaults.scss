@@ -5,12 +5,12 @@
 	box-sizing: border-box;
 }
 
-html {
+/* html {
 	scroll-behavior: smooth;
 	@media (max-width: 500px) {
 		scroll-behavior: auto;
 	}
-}
+} */
 html.noScroll {
 	body {
 		padding-right: 15px;

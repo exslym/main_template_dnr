@@ -1,75 +1,7 @@
-import $ from 'jquery';
-require('../../public/tools/magnific-popup.min.js');
-
 const w = window;
 const e = document.documentElement;
 const b = document.getElementsByTagName('body')[0];
 const x = w.innerWidth || e.clientWidth || b.clientWidth;
-
-//* for PLUS/ZOOM buttons on mobile devices:
-export function zoom(popupClass) {
-	if (document.querySelector(`${popupClass}`)) {
-		let scrollPosition;
-		$(`${popupClass}`).magnificPopup({
-			/* Фикс для корректного открытия popup (отключаем скроллинг сайта на фоне popup) и возврата на текущее расположение на странице после закрытия popup: */
-			type: 'inline',
-			fixedContentPos: true,
-			fixedBgPos: true,
-			callbacks: {
-				beforeOpen: () => {
-					scrollPosition = $(window).scrollTop();
-					$('html').addClass('mfp-helper');
-				},
-				close: () => {
-					$('html').removeClass('mfp-helper');
-					$(window).scrollTop(scrollPosition);
-				},
-			},
-		});
-	}
-
-	/* //! add this class to .scss file:
-			html.mfp-helper {
-				body {
-					overflow: hidden;
-					.wrapper {
-						display: none;
-						visibility: hidden !important;
-						-webkit-overflow-scrolling: none;
-					}
-				}
-			}
-	*/
-}
-
-//* Smooth navigation scroll
-export function smoothScroll(anchorClass) {
-	if (document.querySelector(`a${anchorClass}`)) {
-		document.querySelectorAll(`a${anchorClass}`).forEach(link => {
-			link.addEventListener('click', function (e) {
-				if (document.getElementById(link.getAttribute('href').substring(1))) {
-					e.preventDefault();
-					let href = link.getAttribute('href').substring(1);
-					const scrollTarget = document.getElementById(href);
-					const topOffset = 0;
-
-					//! если не нужен отступ сверху:
-					// const topOffset = 0;
-					//! если есть fixed:
-					// document.querySelector('.scrollto').offsetHeight;
-
-					const elementPosition = scrollTarget.getBoundingClientRect().top;
-					const offsetPosition = elementPosition - topOffset;
-
-					window.scrollBy({
-						top: offsetPosition,
-						behavior: 'smooth',
-					});
-				}
-			});
-		});
-	}
-}
 
 //* Block "open/close on mobile devices" instead of tooltip on "hover on desktop"
 export function showBlock(expandButton, activeClass) {
@@ -134,17 +66,5 @@ export function expandBlock(expandButton, expandBlock, activeClass) {
 		// 		}
 		// 	});
 		// });
-	}
-}
-
-//* flipping cards:
-export function flipCards(flipperClass, activeClass) {
-	const flippers = document.querySelectorAll(`${flipperClass}`);
-	if (flippers) {
-		for (let flipper of flippers) {
-			flipper.addEventListener('click', () => {
-				flipper.classList.toggle(`${activeClass}`);
-			});
-		}
 	}
 }

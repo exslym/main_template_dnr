@@ -1,4 +1,4 @@
-export function packshotAnimation(elementClass, animationClass) {
+export function elementAnimation(elementClass, animationClass) {
 	window.addEventListener('load', () => {
 		const observer = new IntersectionObserver(
 			entries => {

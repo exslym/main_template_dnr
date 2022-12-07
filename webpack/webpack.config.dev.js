@@ -1,4 +1,3 @@
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const Path = require('path');
 const Webpack = require('webpack');
 const { merge } = require('webpack-merge');
@@ -16,10 +15,13 @@ module.exports = merge(common, {
 		new Webpack.DefinePlugin({
 			'process.env.NODE_ENV': JSON.stringify('development'),
 		}),
+		/* 		
 		new Webpack.ProvidePlugin({
 			$: 'jquery',
 			jQuery: 'jquery',
-		}),
+			'window.jQuery': 'jquery',
+		}), 
+		*/
 	],
 	module: {
 		rules: [

@@ -1,40 +1,81 @@
-export function modals(openButton, modalBlock, closeButton) {
+export function modals(modalBlock, openButton, closeButton) {
 	if (document.querySelector(`${openButton}`)) {
-		const modal = document.querySelector(`${modalBlock}`);
-		const openModal = document.querySelector(`${openButton}`);
-		const closeModal = document.querySelector(`${closeButton}`);
+		const modals = document.querySelectorAll(`${modalBlock}`);
+		const openModalButtons = document.querySelectorAll(`${openButton}`);
+		const closeModalButtons = document.querySelectorAll(`${closeButton}`);
 
-		openModal.addEventListener('click', () => {
-			document.querySelector('html').classList.add('noScroll');
-			modal.showModal();
+		openModalButtons.forEach(button => {
+			button.addEventListener('click', () => {
+				document.querySelector('html').classList.add('noScroll');
+				document.querySelector(`#${button.dataset.label}`).showModal();
+				document.querySelector(`#${button.dataset.label}`).scrollTop = 0;
+			});
 		});
-
-		closeModal.addEventListener('click', () => {
-			document.querySelector('html').classList.remove('noScroll');
-			modal.setAttribute('closing', '');
-			modal.addEventListener(
-				'animationend',
-				() => {
-					modal.removeAttribute('closing');
-					modal.close();
-				},
-				{ once: true }
-			);
-		});
-
-		modal.addEventListener('click', e => {
-			if (e.target.nodeName === 'DIALOG') {
+		closeModalButtons.forEach(button => {
+			button.addEventListener('click', e => {
 				document.querySelector('html').classList.remove('noScroll');
-				modal.setAttribute('closing', '');
-				modal.addEventListener(
+				let openedModal = e.target.parentElement.parentNode;
+				openedModal.setAttribute('closing', '');
+				openedModal.addEventListener(
 					'animationend',
 					() => {
-						modal.removeAttribute('closing');
-						modal.close();
+						openedModal.removeAttribute('closing');
+						openedModal.close();
 					},
 					{ once: true }
 				);
-			}
+			});
+		});
+		modals.forEach(modal => {
+			modal.addEventListener('click', function (e) {
+				if (e.target.nodeName === 'DIALOG') {
+					document.querySelector('html').classList.remove('noScroll');
+					this.setAttribute('closing', '');
+					this.addEventListener(
+						'animationend',
+						() => {
+							this.removeAttribute('closing');
+							this.close();
+						},
+						{ once: true }
+					);
+				}
+			});
 		});
 	}
 }
+
+//! html structure - copy template to your document:
+//* BUTTONS:
+/* 
+	<button class="open-button" data-label="modal1">
+		<p>Open Modal 1</p>
+	</button>
+	<button class="open-button" data-label="modal2">
+		<p>Open Modal 2</p>
+	</button>
+*/
+//* MODALS:
+/* 
+	<dialog class="modal" id="modal1">
+		<div class="modal-container">
+			<div class="modal-box">
+				<div class="modal-content">
+					<h2>MODAL 1</h2>
+				</div>
+			</div>
+			<img class="close-button" src="../public/close.svg" alt="close" />
+		</div>
+	</dialog>
+
+	<dialog class="modal" id="modal2">
+		<div class="modal-container">
+			<div class="modal-box">
+				<div class="modal-content">
+					<h2>MODAL 2</h2>
+				</div>
+			</div>
+			<img class="close-button" src="../public/close.svg" alt="close" />
+		</div>
+	</dialog>
+*/

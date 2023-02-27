@@ -1,0 +1,37 @@
+/* fonts */
+$font-main: 'Inter', Arial, Helvetica, sans-serif;
+
+/* colors */
+$clr-default: #f5f5f5;
+/* ================ */
+$clr-white: #ffffff;
+$clr-black: #3b5676;
+
+/* desktop scrollbar width */
+$scrollbar: 15px;
+
+/* font-sizes */
+.fs50 {
+	@include adapt(font-size, 28, 50);
+}
+.fs48 {
+	@include adapt(font-size, 28, 48);
+}
+.fs32 {
+	@include adapt(font-size, 16, 32);
+}
+.fs28 {
+	@include adapt(font-size, 14, 28);
+}
+.fs22 {
+	@include adapt(font-size, 14, 22);
+}
+.fs20 {
+	@include adapt(font-size, 14, 20);
+}
+.fs16 {
+	@include adapt(font-size, 13, 16);
+}
+.fs14 {
+	@include adapt(font-size, 12, 14);
+}

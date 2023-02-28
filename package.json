@@ -1,20 +1,39 @@
 {
-	"name": "webpack_project1",
+	"name": "main_template_dnr",
 	"version": "1.0.0",
-	"description": "Basic configuration for dnr template",
+	"description": "Custom project configuration for DnR template",
+	"license": "ISC",
+	"keywords": [
+		"webpack",
+    "eslint",
+    "prettier",
+		"@babel/preset-env",
+		"postcss-preset-env",
+    "eslint-webpack-plugin",
+		"mini-css-extract-plugin"
+  ],
+	"author": "exslym",
+	"homepage": "https://github.com/exslym/main_template_dnr",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/exslym/main_template_dnr.git"
+	},
+	"bugs": {
+    "url": "https://github.com/exslym/main_template_dnr/issues"
+  },
+
 	"main": "index.js",
 	"scripts": {
 		"start": "cross-env NODE_ENV=development webpack serve --open --config webpack/webpack.config.dev.js",
 		"build": "cross-env NODE_ENV=production webpack --config webpack/webpack.config.prod.js"
 	},
+
 	"browserslist": [
 		"last 2 versions",
 		"> 1%",
 		"IE 11"
 	],
-	"keywords": [],
-	"author": "",
-	"license": "ISC",
+
 	"devDependencies": {
 		"@babel/core": "^7.21.0",
 		"@babel/eslint-parser": "^7.19.1",

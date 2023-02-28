@@ -21,19 +21,17 @@
 	"bugs": {
 		"url": "https://github.com/exslym/main_template_dnr/issues"
 	},
-
 	"main": "index.js",
 	"scripts": {
 		"start": "cross-env NODE_ENV=development webpack serve --open --config webpack/webpack.config.dev.js",
-		"build": "cross-env NODE_ENV=production webpack --config webpack/webpack.config.prod.js"
+		"build": "cross-env NODE_ENV=production webpack --config webpack/webpack.config.prod.js",
+		"deploy": "gh-pages -d build"
 	},
-
 	"browserslist": [
 		"last 2 versions",
 		"> 1%",
 		"IE 11"
 	],
-
 	"devDependencies": {
 		"@babel/core": "^7.21.0",
 		"@babel/eslint-parser": "^7.19.1",
@@ -47,6 +45,7 @@
 		"eslint-plugin-import": "^2.27.5",
 		"eslint-plugin-prettier": "^4.2.1",
 		"eslint-webpack-plugin": "^4.0.0",
+		"gh-pages": "^5.0.0",
 		"html-loader": "^4.2.0",
 		"html-webpack-plugin": "^5.5.0",
 		"mini-css-extract-plugin": "^2.7.2",

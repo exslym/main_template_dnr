@@ -3,7 +3,7 @@ const Webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { merge } = require('webpack-merge');
 const common = require('./webpack.common.js');
-const ESLintPlugin = require('eslint-webpack-plugin');
+const ESLintWebpackPlugin = require('eslint-webpack-plugin');
 
 module.exports = merge(common, {
 	mode: 'development',
@@ -27,7 +27,7 @@ module.exports = merge(common, {
 				},
 			],
 		}),
-		new ESLintPlugin({
+		new ESLintWebpackPlugin({
 			extensions: [`js`, `jsx`],
 			exclude: [`/node_modules/`, `/bower_components/`],
 		}),

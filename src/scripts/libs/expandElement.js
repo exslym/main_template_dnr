@@ -6,11 +6,11 @@ export function expandBlock(
 	scrollOption = false
 ) {
 	if (
-		document.querySelector(`${expandButton}`) &&
-		document.querySelector(`${expandBlock}`)
+		document.querySelector(`.${expandButton}`) &&
+		document.querySelector(`.${expandBlock}`)
 	) {
-		const buttons = document.querySelectorAll(`${expandButton}`);
-		const blocks = document.querySelectorAll(`${expandBlock}`);
+		const buttons = document.querySelectorAll(`.${expandButton}`);
+		const blocks = document.querySelectorAll(`.${expandBlock}`);
 
 		blocks.forEach(block => {
 			block.style.maxHeight = '0px';

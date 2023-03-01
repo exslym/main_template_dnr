@@ -1,5 +1,6 @@
 const Path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
 const fs = require('fs');
 
 let htmlPageNames = [];
@@ -25,6 +26,32 @@ module.exports = {
 		splitChunks: {
 			chunks: 'all',
 		},
+		minimizer: [
+			'...',
+			new ImageMinimizerPlugin({
+				minimizer: [
+					{
+						implementation: ImageMinimizerPlugin.sharpMinify,
+						options: {
+							encodeOptions: {
+								png: { quality: 100 },
+								jpeg: { quality: 100 },
+							},
+						},
+					},
+					{
+						implementation: ImageMinimizerPlugin.svgoMinify,
+						options: {
+							encodeOptions: {
+								multipass: true,
+								plugins: ['preset-default'],
+							},
+						},
+					},
+				],
+				exclude: /\.(ico|gif)(\?.*)?$/,
+			}),
+		],
 	},
 	plugins: [].concat(multipleHtmlPlugins),
 	resolve: {
@@ -39,7 +66,7 @@ module.exports = {
 				type: 'javascript/auto',
 			},
 			{
-				test: /\.(ico|jpg|jpeg|png|gif|webp|tiff|svg)(\?.*)?$/,
+				test: /\.(ico|jpg|jpeg|png|gif|webp|tiff|avif|svg)(\?.*)?$/,
 				type: 'asset/resource',
 			},
 			{

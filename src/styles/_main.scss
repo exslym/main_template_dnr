@@ -27,12 +27,15 @@
 ._1 {
 	.section__content {
 		.block {
-			h1 {
-				text-align: center;
-			}
+			h1,
+			button,
 			video {
 				margin: 0 auto;
 				display: block;
+				text-align: center;
+			}
+			button {
+				@include adapt(margin-top, 10, 30);
 			}
 		}
 	}

@@ -46,12 +46,10 @@
 					'ga'
 				);
 				//! здесь вместо ___ номер счетчика UA GA
-				ga('create', '___', 'auto', {
-					name: `${projectName}`,
-				});
+				ga(`create`, `___`, `auto`, { name: `${projectName}` });
 				//! здесь вместо page/___ - часть актуального адреса (после домена) страницы на платформе doktornarabote.ru/,  например: page/1002020
-				ga(`${projectName}.set`, 'page', 'page/___');
-				ga(`${projectName}.set`, 'title', `${pageTitle}`);
+				ga(`${projectName}.set`, `page`, `page/___`);
+				ga(`${projectName}.set`, `title`, `${pageTitle}`);
 			});
 		</script>
 
@@ -154,6 +152,12 @@
 				<div class="section__content">
 					<div class="block">
 						<h1>Header</h1>
+						<button
+							data-label="button_1"
+							onclick="ga(`${projectName}.send`, `event`, `button`, `click`, `${dataset.label}`)"
+						>
+							click me
+						</button>
 						<video controls preload="auto" data-label="background_music">
 							<source
 								src="../public/video/background_music.mp4"

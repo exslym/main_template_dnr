@@ -119,12 +119,11 @@
 						`${e.data.label}`,
 						`${pageTitle} scrolled`
 					);
-					console.log(`${pageTitle} ${e.data.label} scrolled`);
 				});
 			});
 		</script>
 
-		<!-- Sections view (GA) -->
+		<!-- Slides view (GA) -->
 		<script type="text/javascript">
 			window.addEventListener('load', () => {
 				const slideObserver = new IntersectionObserver(
@@ -137,9 +136,8 @@
 								`event`,
 								`slide`,
 								`${target.id}`,
-								`${projectTitle}_slides_visited`
+								`${pageTitle}_slides_visited`
 							);
-							console.log(`${target.id}_visited`);
 						});
 					},
 					{ threshold: 0.1 }
@@ -156,6 +154,12 @@
 				<div class="section__content">
 					<div class="block">
 						<h1>Header</h1>
+						<video controls preload="auto" data-label="background_music">
+							<source
+								src="../public/video/background_music.mp4"
+								type="video/mp4"
+							/>
+						</video>
 					</div>
 				</div>
 			</section>
@@ -202,7 +206,8 @@
 					return setInterval(function () {
 						const seconds = sec + 1;
 						const minutes = Math.floor(seconds / 60);
-						const duration = Math.floor(video.duration);
+						const durationReal = Math.floor(video.duration);
+						const duration = durationReal - 5;
 						const data = video.dataset.label;
 
 						switch (true) {
@@ -231,7 +236,7 @@
 									);
 								}
 								break;
-							case seconds >= 60 && sec < duration:
+							case seconds >= 60 && seconds < duration:
 								if (seconds % 15 === 0) {
 									switch (true) {
 										case seconds - minutes * 60 !== 0:
@@ -254,7 +259,7 @@
 									}
 								}
 								break;
-							case seconds === duration - 10:
+							case seconds === duration:
 								ga(`${projectName}.send`, `event`, `video`, `end`, data);
 								break;
 						}

@@ -18,7 +18,7 @@
 	background: $clr-white;
 	&__content {
 		margin: 0 auto;
-		@include adaptMult(padding, 40 20, 80 30, 1024);
+		@include adaptMult(padding, 40 80, 20 30, 1024);
 		@include adapt(max-width, 808, 1340);
 		width: 100%;
 	}

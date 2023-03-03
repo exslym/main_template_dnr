@@ -7,6 +7,7 @@
 $projectWidth: 1920;
 //? ================================ ?//
 
+/* example: @include adapt(max-width, 600, 1000, 1920); */
 @mixin adapt($property, $minValue, $maxValue, $breakPoint: $projectWidth) {
 	$min: $minValue + px;
 	$max: $maxValue + px;
@@ -41,18 +42,19 @@ $projectWidth: 1920;
 	}
 }
 
+/* example: @include adaptMult(padding, 40 80, 20 30, 1024); */
 @mixin adaptMult(
 	$property,
-	$minValues,
-	$maxValues,
+	$firstValues,
+	$secondValues,
 	$breakPoint: $projectWidth
 ) {
-	$min1: nth($minValues, 1) + px;
-	$min2: nth($minValues, 2) + px;
-	$max1: nth($maxValues, 1) + px;
-	$max2: nth($maxValues, 2) + px;
-	$maxValue1: nth($maxValues, 1);
-	$maxValue2: nth($maxValues, 2);
+	$min1: nth($firstValues, 1) + px;
+	$max1: nth($firstValues, 2) + px;
+	$min2: nth($secondValues, 1) + px;
+	$max2: nth($secondValues, 2) + px;
+	$maxValue1: nth($firstValues, 2);
+	$maxValue2: nth($secondValues, 2);
 
 	@if ($breakPoint) {
 		$coeff: math.div($breakPoint, 100);
@@ -60,7 +62,7 @@ $projectWidth: 1920;
 		$vw2: calc(round(math.div($maxValue2, $coeff) * 1000) / 1000) + vw;
 
 		// check negative/positive value
-		@each $name, $char in str($minValues) and str($maxValues) {
+		@each $name, $char in str($firstValues) and str($secondValues) {
 			@if (str-index($name, '-')) {
 				// for negative clamp()
 				#{$property}-top: clamp(#{$max1}, #{$vw1}, #{$min1});
@@ -81,7 +83,7 @@ $projectWidth: 1920;
 		$vw2: calc(round(math.div($max2, $coeff) * 1000) / 1000) + vw;
 
 		// check negative/positive value
-		@each $name, $char in str($minValues) and str($maxValues) {
+		@each $name, $char in str($firstValues) and str($secondValues) {
 			@if (str-index($name, '-')) {
 				// for negative clamp()
 				#{$property}-top: clamp(#{$max1}, #{$vw1}, #{$min1});

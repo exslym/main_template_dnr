@@ -33,7 +33,7 @@ html.mfp-helper {
 
 body {
 	background-color: $clr-default;
-	font-family: $font-main;
+	font-family: $font-default;
 	font-style: normal;
 	font-weight: 400;
 	@include adapt(font-size, 16, 22);

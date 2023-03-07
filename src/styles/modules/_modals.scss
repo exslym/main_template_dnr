@@ -1,7 +1,19 @@
+$scrollbar: 15px;
+
+html.noScroll {
+	body {
+		padding-right: $scrollbar;
+		overflow: hidden;
+		@media screen and (max-width: 1024px) {
+			padding-right: 0;
+		}
+	}
+}
+
 .modal {
 	overflow: hidden;
 	margin: auto;
-	background: rgba(24, 23, 21, 0.4);
+	background: rgba(37, 23, 22, 0.7);
 	width: 100%;
 	height: 100%;
 	max-width: 100vw;
@@ -9,11 +21,11 @@
 	border: none;
 }
 .modal::-webkit-backdrop {
-	background: rgba(24, 23, 21, 0.4);
+	background: rgba(37, 23, 22, 0.7);
 	opacity: 0;
 }
 .modal::backdrop {
-	background: rgba(24, 23, 21, 0.4);
+	background: rgba(37, 23, 22, 0.7);
 	opacity: 0;
 }
 .modal-container {
@@ -29,46 +41,42 @@
 
 .modal-box {
 	position: relative;
-	@include adaptMult(padding, 20 30, 50 60);
-
-	.close-button {
-		position: absolute;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		@include adapt(top, 5, 10);
-		@include adapt(right, 5, 10);
-		@include adapt(width, 20, 40);
-		@include adapt(height, 20, 40);
-		cursor: pointer;
-		img {
-			display: block;
-		}
-	}
-	.modal-content {
-		display: flex;
-		align-items: flex-start;
-		justify-content: space-between;
-		@include adapt(gap, 20, 40);
-	}
 }
 
-.modal[open] {
+.closeButton {
+	position: absolute;
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	@include adapt(top, 5, 10);
+	@include adapt(right, 5, 10);
+	@include adapt(width, 20, 40);
+	@include adapt(height, 20, 40);
+	cursor: pointer;
+	img {
+		display: block;
+	}
+}
+
+.modal[open],
+.modal[closing] {
 	padding: 1em;
-	@include adapt(padding-left, 20, 30, 768);
-	padding-right: calc(clamp(20px, 3.9vw, 30px) + $scrollbar);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.modal[open] {
+	padding-right: calc(1em + $scrollbar);
 	animation: fade-in 500ms forwards;
 	.modal-container {
-		-webkit-animation: slide-in 700ms ease-in-out forwards;
-		animation: slide-in 700ms ease-in-out forwards;
+		-webkit-animation: slide-in 500ms ease-in-out forwards;
+		animation: slide-in 500ms ease-in-out forwards;
 	}
 }
 
 .modal[closing] {
-	@include adapt(padding-right, 20, 30, 768);
+	padding: 1em;
 	animation: fade-out 500ms forwards;
 	.modal-container {
 		animation: slide-out 500ms ease-in forwards;
@@ -76,36 +84,31 @@
 	}
 }
 
-@media (max-width: 767px) {
-	.modal[open] {
-		padding: 1em;
-		@include adapt(padding-left, 20, 30, 767);
-		padding-right: calc(clamp(20px, 3.9vw, 30px) + $scrollbar);
-	}
+@media (max-width: 1024px) {
+	.modal[open],
 	.modal[closing] {
-		@include adapt(padding-right, 20, 30, 767);
+		padding: 1em;
+		align-items: flex-start;
 	}
+
 	.modal-container {
-		@include adapt(max-width, 400, 700, 767);
+		@include adapt(max-width, 400, 700, 768);
 	}
 }
+
 @media (max-width: 700px) {
 	.modal-box .modal-content {
 		flex-direction: column;
 	}
 }
-@media (max-width: 600px) {
-	.modal[open] {
-		@include adapt(padding-left, 20, 30, 767);
-		@include adapt(padding-right, 20, 30, 767);
-	}
+
+@media (max-width: 430px) {
+	.modal[open],
 	.modal[closing] {
-		@include adapt(padding-right, 20, 30, 767);
+		padding: 1em;
 	}
 }
-@media (max-width: 403px) {
-	.modal-box {
-		padding: 20px;
-		padding-top: 30px;
-	}
+
+.noPadddingRight {
+	padding: 1em;
 }

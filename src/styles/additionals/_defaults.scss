@@ -13,10 +13,14 @@
 
 html.noScroll {
 	body {
-		padding-right: 15px;
+		padding-right: $scrollbar;
 		overflow: hidden;
+		@media screen and (max-width: 768px) {
+			padding-right: 0;
+		}
 	}
 }
+
 html.mfp-helper {
 	body {
 		overflow: hidden;

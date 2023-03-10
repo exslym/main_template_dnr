@@ -8,9 +8,9 @@
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<!-- PROJECT_NAME for Google Analytics - the same for all pages: -->
-		<meta name="description" content="PROJECT_NAME" />
+		<meta name="projectName" content="PROJECT_NAME" />
 		<!-- PAGE_TITLE for Google Analytics - variable for each page: -->
-		<title>PAGE_TITLE</title>
+		<title data-title="pageTitle">PAGE_TITLE</title>
 
 		<script src="../tools/jquery-3.6.3.min.js"></script>
 		<script src="../tools/magnific-popup.min.js"></script>
@@ -18,9 +18,11 @@
 
 		<!-- Google Analytics (GA) -->
 		<script type="text/javascript">
-			const pageTitle = `${document.querySelector('head title').textContent}`;
+			const pageTitle = `${
+				document.querySelector('[data-title="pageTitle"]').textContent
+			}`;
 			const projectName = `${
-				document.querySelector('meta[name="description"]').content
+				document.querySelector('meta[name="projectName"]').content
 			}`;
 		</script>
 

@@ -18,7 +18,7 @@ export function modals(modalBlock, openButton, closeButton) {
 
 		openModalButtons.forEach(button => {
 			button.addEventListener('click', () => {
-				const openingModal = document.querySelector(`#${button.dataset.label}`);
+				const openingModal = document.querySelector(`#${button.dataset.name}`);
 				document.querySelector('html').classList.add('noScroll');
 				openingModal.showModal();
 				openingModal.scrollTop = 0;
@@ -33,7 +33,7 @@ export function modals(modalBlock, openButton, closeButton) {
 		});
 		closeModalButtons.forEach(button => {
 			button.addEventListener('click', () => {
-				const openedModal = document.querySelector(`#${button.dataset.label}`);
+				const openedModal = document.querySelector(`#${button.dataset.name}`);
 				document.querySelector('html').classList.remove('noScroll');
 				openedModal.setAttribute('closing', '');
 				openedModal.style.overflow = 'hidden';
@@ -70,10 +70,10 @@ export function modals(modalBlock, openButton, closeButton) {
 //! html structure - copy template to your document:
 //* BUTTONS:
 /* 
-	<button class="openButton" data-label="modal1">
+	<button class="openButton" data-name="modal1">
 		<p>Open Modal 1</p>
 	</button>
-	<button class="openButton" data-label="modal2">
+	<button class="openButton" data-name="modal2">
 		<p>Open Modal 2</p>
 	</button>
 */
@@ -86,7 +86,7 @@ export function modals(modalBlock, openButton, closeButton) {
 					<h2>MODAL 1</h2>
 				</div>
 			</div>
-			<img class="closeButton" data-label="modal1" src="../public/images/close.svg" alt="close" />
+			<img class="closeButton" data-name="modal1" src="../public/images/close.svg" alt="close" />
 		</div>
 	</dialog>
 
@@ -97,7 +97,8 @@ export function modals(modalBlock, openButton, closeButton) {
 					<h2>MODAL 2</h2>
 				</div>
 			</div>
-			<img class="closeButton" data-label="modal2" src="../public/images/close.svg" alt="close" />
+			<img class="closeButton" data-name="modal2" src="../public/images/close.svg" alt="close" />
 		</div>
 	</dialog>
 */
+//! styles - copy _modals.scss module to your project and import it in the index.scss

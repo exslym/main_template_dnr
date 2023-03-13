@@ -19,7 +19,13 @@ export function modals(modalBlock, openButton, closeButton) {
 		openModalButtons.forEach(button => {
 			button.addEventListener('click', () => {
 				const openingModal = document.querySelector(`#${button.dataset.name}`);
-				document.querySelector('html').classList.add('noScroll');
+				/* Check if scrollbar is visible */
+				if (document.body.clientHeight > window.innerHeight) {
+					document.querySelector('html').classList.add('noScroll');
+				} else {
+					openingModal.style.padding = '1em';
+				}
+
 				openingModal.showModal();
 				openingModal.scrollTop = 0;
 				openingModal.addEventListener(

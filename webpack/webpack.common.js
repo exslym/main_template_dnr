@@ -35,7 +35,7 @@ module.exports = {
 						options: {
 							encodeOptions: {
 								png: { quality: 100 },
-								jpeg: { quality: 100 },
+								jpeg: { quality: 95 },
 							},
 						},
 					},

@@ -26,12 +26,12 @@ This adds gh-pages branch to your project github repository, deploys built proje
 
 ### Features:
 
-- `ES6` Support **via babel (v7)**
-- `SASS` Support via **sass-loader**
-- `Linting` Support via **eslint** & **@babel/eslint-parser**
-- `Formatter` Support via **prettier**
-- `Autoprefix` Support via **postcss-preset-env**
-- `Image Optimization` Support via **image-minimizer-webpack-plugin** & **svgo**
+- `ES6` support via **babel (v7)**
+- `SASS` support via **sass-loader**
+- `Linting` support via **eslint** & **@babel/eslint-parser**
+- `Formatter` support via **prettier**
+- `Autoprefix` support via **postcss-preset-env**
+- `Image Optimization` support via **image-minimizer-webpack-plugin** & **svgo**
 
 ### When you run `npm run build`:
 

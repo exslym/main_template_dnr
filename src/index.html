@@ -12,6 +12,31 @@
 		<!-- PAGE_TITLE for Google Analytics - variable for each page: -->
 		<title data-title="pageTitle">PAGE_TITLE</title>
 
+	<body>
+		<div class="wrapper">
+			<section class="section _1" data-id="slidesObserver" id="slide_1">
+				<div class="section__content">
+					<div class="block">
+						<h1>Header</h1>
+						<button
+							type="submit"
+							data-label="button_1"
+							onclick="ga(`${projectName}.send`, `event`, `button`, `click`, `${dataset.label}`)"
+						>
+							click me
+						</button>
+						<video controls preload="auto" data-label="background_music">
+							<source
+								src="../public/video/background_music.mp4"
+								type="video/mp4"
+							/>
+						</video>
+					</div>
+				</div>
+			</section>
+		</div>
+
+
 		<script src="../tools/jquery-3.6.3.min.js"></script>
 		<script src="../tools/magnific-popup.min.js"></script>
 		<script src="../tools/scroll-tracker.min.js"></script>
@@ -148,31 +173,7 @@
 			});
 		</script>
 	</head>
-
-	<body>
-		<div class="wrapper">
-			<section class="section _1" data-id="slidesObserver" id="slide_1">
-				<div class="section__content">
-					<div class="block">
-						<h1>Header</h1>
-						<button
-							type="submit"
-							data-label="button_1"
-							onclick="ga(`${projectName}.send`, `event`, `button`, `click`, `${dataset.label}`)"
-						>
-							click me
-						</button>
-						<video controls preload="auto" data-label="background_music">
-							<source
-								src="../public/video/background_music.mp4"
-								type="video/mp4"
-							/>
-						</video>
-					</div>
-				</div>
-			</section>
-		</div>
-
+	
 		<!-- Videos view (GA) -->
 		<script>
 			(function (e) {

@@ -36,7 +36,8 @@ body {
 	font-family: $font-default;
 	font-style: normal;
 	font-weight: 400;
-	@include adapt(font-size, 16, 22);
+	line-height: 1.2;
+	font-size: $fs-default;
 	color: $clr-black;
 }
 a {

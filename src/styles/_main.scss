@@ -24,6 +24,19 @@
 	}
 }
 
+/* for magnific popup */
+.mfp-container {
+	padding: 1em;
+	overflow-y: auto;
+}
+.mfp-close {
+	@include adapt(width, 30, 40);
+	@include adapt(height, 30, 40);
+	@include adapt(font-size, 30, 40);
+	line-height: 1;
+}
+
+/* SECTIONS */
 ._1 {
 	.section__content {
 		.block {

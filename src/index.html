@@ -48,26 +48,6 @@
 			}`;
 		</script>
 
-		<!-- Google Analytics (GA4) -->
-		<!-- 	здесь вместо X-XXXXXXXXXX - идентификатор потока данных счетчика GA4, вместо __полный_адрес_страницы__ - актуальный полный адрес (включая домен) страницы на платформе doktornarabote.ru, например: https://www.doktornarabote.ru/page/1002020
-		 -->
-		<script
-			async
-			src="https://www.googletagmanager.com/gtag/js?id=X-XXXXXXXXXX"
-		></script>
-		<script type="text/javascript">
-			window.dataLayer = window.dataLayer || [];
-			function gtag() {
-				dataLayer.push(arguments);
-			}
-			gtag('js', new Date());
-			gtag('config', 'X-XXXXXXXXXX');
-			gtag('set', {
-				page_title: `${pageTitle}`,
-				page_location: `__полный_адрес_страницы__`,
-			});
-		</script>
-
 		<!-- Google Analytics Universal (UA) -->
 		<script type="text/javascript">
 			window.addEventListener('load', function () {
@@ -97,6 +77,44 @@
 				//! здесь вместо page/___ - часть актуального адреса (после домена) страницы на платформе doktornarabote.ru/,  например: page/1002020
 				ga(`${projectName}.set`, `page`, `page/___`);
 			});
+		</script>
+
+		<!-- Google Analytics (GA4) -->
+		<!-- 	здесь вместо X-XXXXXXXXXX - идентификатор потока данных счетчика GA4, вместо __полный_адрес_страницы__ - актуальный полный адрес (включая домен) страницы на платформе doktornarabote.ru, например: https://www.doktornarabote.ru/page/1002020
+		 -->
+		<script
+			async
+			src="https://www.googletagmanager.com/gtag/js?id=X-XXXXXXXXXX"
+		></script>
+		<script type="text/javascript">
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag('js', new Date());
+			gtag('config', 'X-XXXXXXXXXX');
+			gtag('set', {
+				page_title: `${pageTitle}`,
+				page_location: `__полный_адрес_страницы__`,
+			});
+		</script>
+
+		<!-- Google Tag Manager (GTM) -->
+		<script>
+			(function (w, d, s, l, i) {
+				w[l] = w[l] || [];
+				w[l].push({
+					'gtm.start': new Date().getTime(),
+					event: 'gtm.js',
+				});
+				var f = d.getElementsByTagName(s)[0],
+					j = d.createElement(s),
+					dl = l != 'dataLayer' ? '&l=' + l : '';
+				j.async = true;
+				j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+				f.parentNode.insertBefore(j, f);
+				// здесь вместо GTM-XXXXXXXXX идентификатор потока данных счетчика GTM
+			})(window, document, 'script', 'dataLayer', 'GTM-XXXXXXXXX');
 		</script>
 
 		<!-- NoBounce (GA) -->
@@ -163,6 +181,7 @@
 						`${e.data.label}`,
 						`${pageTitle} scrolled`
 					);
+					gtag('event', 'scroll', { scroll: `${pageTitle}: ${e.data.label}` });
 				});
 			});
 		</script>
@@ -182,6 +201,7 @@
 								`${target.id}`,
 								`${pageTitle}_slides_visited`
 							);
+							gtag('event', 'slide', { slide: `${pageTitle}: ${target.id}` });
 						});
 					},
 					{ threshold: 0.1 }
@@ -241,6 +261,7 @@
 						switch (true) {
 							case seconds === 1:
 								ga(`${projectName}.send`, `event`, `video`, `start`, data);
+								gtag(`event`, `video`, { video: `${data} - start` });
 								break;
 							case seconds > 0 && seconds < 30:
 								if (seconds % 5 === 0) {
@@ -251,6 +272,7 @@
 										`${seconds}s`,
 										data
 									);
+									gtag(`event`, `video`, { video: `${data} - ${seconds}s` });
 								}
 								break;
 							case seconds >= 30 && seconds < 60:
@@ -262,6 +284,7 @@
 										`${seconds}s`,
 										data
 									);
+									gtag(`event`, `video`, { video: `${data} - ${seconds}s` });
 								}
 								break;
 							// после первых 60 секунд конвертим секунды в минуты и каждые 15 секунд опрокидываем событие вида, например, 1m 45s, далее 2m, далее 2m 15s и т.д.:
@@ -276,6 +299,11 @@
 												`${minutes}m ${seconds - minutes * 60}s`,
 												data
 											);
+											gtag(`event`, `video`, {
+												video: `${data} - ${minutes}m ${
+													seconds - minutes * 60
+												}s`,
+											});
 											break;
 										default:
 											ga(
@@ -285,12 +313,16 @@
 												`${minutes}m`,
 												data
 											);
+											gtag(`event`, `video`, {
+												video: `${data} - ${minutes}m`,
+											});
 									}
 								}
 								break;
 							// Конец видео:
 							case seconds === duration:
 								ga(`${projectName}.send`, `event`, `video`, `end`, data);
+								gtag(`event`, `video`, { video: `${data} - end` });
 								break;
 						}
 						sec++;
@@ -311,5 +343,16 @@
 		<script src="../tools/jquery-3.6.3.min.js"></script>
 		<script src="../tools/magnific-popup.min.js"></script>
 		<script src="../tools/scroll-tracker.min.js"></script>
+
+		<!-- Google Tag Manager (GTM) -->
+		<!-- здесь вместо GTM-XXXXXXXXX идентификатор потока данных счетчика GTM  -->
+		<noscript>
+			<iframe
+				src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXXXX"
+				height="0"
+				width="0"
+				style="display: none; visibility: hidden"
+			></iframe
+		></noscript>
 	</body>
 </html>

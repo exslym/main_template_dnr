@@ -94,13 +94,12 @@
 			gtag('js', new Date());
 			gtag('config', 'X-XXXXXXXXXX');
 			gtag('set', {
-				page_title: `${pageTitle}`,
-				page_location: `__полный_адрес_страницы__`,
+				send_page_view: false,
 			});
 		</script>
 
 		<!-- Google Tag Manager (GTM) -->
-		<script>
+		<script type="text/javascript">
 			(function (w, d, s, l, i) {
 				w[l] = w[l] || [];
 				w[l].push({

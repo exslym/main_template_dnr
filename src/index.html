@@ -23,6 +23,8 @@
 						<button
 							type="submit"
 							data-label="button_1"
+							data-target="#"
+							data-analytics="gaScripts"
 							onclick="ga(`${projectName}.send`, `event`, `button`, `click`, `${dataset.label}`); gtag('event', 'button-click', {'button': dataset.label});"
 						>
 							click me

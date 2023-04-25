@@ -112,3 +112,41 @@ html.noScroll {
 .noPadddingRight {
 	padding: 1em;
 }
+
+/* add to index.html:
+
+<!-- BUTTON -->
+<button
+	class="button openButton"
+	data-target="modal1"
+>
+	OPEN_MODAL1
+</button>
+
+<!-- MODAL -->
+<dialog class="modal modalBlock" id="modal1">
+	<div class="modal-container">
+		<div class="modal-box box">
+			<div class="modal-content">
+				<div>MODAL_CONTENT</div>
+			</div>
+			<div class="closeButton">
+				<img src="./assets/images/close.svg" alt="close" />
+			</div>
+		</div>
+	</div>
+</dialog>
+
+*/
+
+/* add to index.js:
+
+import { modals } from './libs/modals';
+
+window.addEventListener('DOMContentLoaded', () => {
+  'use strict';
+
+  modals('modalBlock', 'openButton', 'closeButton');
+});
+
+*/

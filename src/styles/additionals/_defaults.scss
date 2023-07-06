@@ -214,6 +214,21 @@ img {
 	align-items: flex-end;
 	justify-content: flex-start;
 }
+.flexFESE {
+	display: flex;
+	align-items: flex-end;
+	justify-content: space-evenly;
+}
+.flexFESA {
+	display: flex;
+	align-items: flex-end;
+	justify-content: space-around;
+}
+.flexFEC {
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+}
 .flexC {
 	display: flex;
 	align-items: center;
@@ -240,6 +255,7 @@ img {
 	justify-content: center;
 }
 
+/* 
 @media (max-width: 500px) {
 	.flexSSB,
 	.flexCSB,
@@ -257,6 +273,7 @@ img {
 		}
 	}
 }
+ */
 
 .flexRow {
 	flex-direction: row;

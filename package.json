@@ -1,7 +1,7 @@
 {
 	"name": "main_template_dnr",
 	"version": "1.0.0",
-	"description": "Custom project configuration for DnR template",
+	"description": "Custom project WEBPACK configuration for DnR template",
 	"license": "ISC",
 	"keywords": [
 		"webpack",
@@ -13,14 +13,6 @@
 		"mini-css-extract-plugin"
 	],
 	"author": "exslym",
-	"homepage": "https://github.com/exslym/main_template_dnr",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/exslym/main_template_dnr.git"
-	},
-	"bugs": {
-		"url": "https://github.com/exslym/main_template_dnr/issues"
-	},
 	"main": "index.js",
 	"scripts": {
 		"start": "cross-env NODE_ENV=development webpack serve --open --config webpack/webpack.config.dev.js",
@@ -45,7 +37,7 @@
 		"eslint-plugin-import": "^2.27.5",
 		"eslint-plugin-prettier": "^4.2.1",
 		"eslint-webpack-plugin": "^4.0.0",
-		"gh-pages": "^5.0.0",
+		"gh-pages": "3.0.0",
 		"html-loader": "^4.2.0",
 		"html-webpack-plugin": "^5.5.0",
 		"image-minimizer-webpack-plugin": "^3.8.1",
